@@ -1,0 +1,137 @@
+.dashboard_nav{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    min-height: 100%;
+    background: #263644;
+}
+
+.dashboard_nav_admin{
+    padding: 20px;
+    background: #1A242E;
+    text-align: center;
+    color: #ccc;
+}
+
+.dashboard_nav_admin a{
+    color: #ccc;
+    text-decoration: none;
+}
+
+.dashboard_nav_admin a:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+
+.nav_menu{
+    float: left;
+    width: 100%;
+    font-size: 0.875em;
+    font-weight: 600;
+    background: #263644;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    list-style: none;
+}
+
+.nav_menu_li{
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.nav_menu_li > a{
+    float: left;
+    width: 100%;
+    color: #ccc;
+    text-decoration: none;
+    padding: 17px 25px 17px 5px;
+    border-top: 1px solid #263644;
+}
+
+.nav_menu_li:hover,
+.nav_menu_li a:hover,
+.nav_menu_active > a{
+    background-color: #263644;
+    color: #fff;
+}
+
+.nav_menu_active > a:after{
+    content: "«";
+    float: right;
+}
+
+.nav_menu_sub{
+    display: none;
+    float: left;
+    width: 100%;
+    left: 100%;
+    position: absolute;
+    background: #263644;
+    z-index: 97;
+    list-style: none;
+}
+
+.nav_menu_li:hover .nav_menu_sub{
+    display: block;
+}
+
+.nav_menu_sub_li,
+.nav_menu_sub_li a{
+    float: left;
+    width: 100%;
+    color: #ccc;
+    text-decoration: none;
+    color: #ccc;
+    font-weight: 400;
+}
+
+.nav_menu_sub_li a{
+    padding: 17px 10px;
+}
+
+.nav_menu_active .nav_menu_sub{
+    display: block;
+    position: relative;
+    left: 0;
+}
+
+.nav_menu_active .nav_menu_sub_li a{
+    padding: 10px 15px 10px 35px;
+    background: #1A242E;
+    border-top: 1px dotted #263644;
+}
+
+.numMessages {
+    float: right;
+    padding: 4px 8px;
+    margin: 0 35px 0 0;
+    text-align: center;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: #FFF;
+    background: #F90;
+    border-radius: 15%;
+}
+
+/*
+1120PX BREAKPOINT
+
+@media(max-width: 1120px){
+    .dashboard_nav{
+        left: -100%;
+    }
+
+    .nav_menu{
+        float: left;
+        width: 100%;
+        font-size: 0.875em;
+        font-weight: 600;
+        background: #263644;
+        padding-bottom: 10px;
+        padding-left: 5px;
+        list-style: none;
+    }
+}*/

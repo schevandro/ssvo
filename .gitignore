@@ -1,0 +1,6 @@
+dts/iniSis.php
+.idea/workspace.xml
+.vagrant/
+admin/documentos/*
+admin/os/*
+admin/cnh/*

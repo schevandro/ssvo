@@ -1,0 +1,1923 @@
+/*IMPORTS*/
+/* ==== Google font ==== */
+@import url('http://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700');
+/* === fontawesome === */
+@import url('font-awesome.min.css');
+/* === custom icon === */
+@import url('custom-fonts.css');
+
+
+/*RESETS*/
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.clear{
+    clear: both;
+}
+
+/*RESET FORMS*/
+fieldset {border: none;}
+label {width: 100%; margin-bottom: 20px; display: block;}
+label span {display: block; margin-bottom: 3px;}
+input,
+select,
+textarea {padding: 10px; width: 100%;}
+input.btn {width: auto; cursor: pointer;}
+
+.fl_left{
+    float: left;
+}
+
+.fl_right{
+    float: right;
+}
+
+.disabled{
+    background: #ccc;
+    color: #FFF;
+}
+
+.disabled:hover{
+    cursor: auto;
+    background: #CCC;
+}
+
+.box33 {
+    float: left;
+    width: 33.333333333%;
+}
+
+.box25{
+    float: left;
+    width: 25%;
+}
+
+
+/*
+MENSAGENS DO SISTEMA
+*/
+.ms{
+    width: 100%;
+    float: left;
+    display: block; 
+    padding: 20px 20px 20px 45px; 
+    margin-bottom: 5px;
+    /*border-radius: 4px;*/
+    font-size: 0.875em;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.no{background:#FDD; color:#000;} /*url(../../imagens/ico_no.png) 7px no-repeat;*/
+.ok{background:#C6E2FF; color:#006;} /*url(../../imagens/ico_ok.png) 7px no-repeat;*/
+.green{background:#D5FFD5; color:#333;} /*url(../../imagens/ico_ok.png) 7px no-repeat;*/
+.blue{background:#66afe9; color:#FFF; border: 1px solid #66afe9;} /*url(../../imagens/ico_ok.png) 7px no-repeat;*/
+.al{background:#f7e1b5; color:#333;} /* url(../../imagens/ico_at.png) 7px no-repeat*/
+.in{background:#B3E7FF; color:#333;} /*url(../../imagens/icon_info.jpg) 7px no-repeat;*/
+
+
+/*
+DASHBOARD
+*/
+.dashboard_main{
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+}
+
+.dashboard{
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard_fix{
+    margin-left: 200px;
+}
+
+.dashboard_sidebar{
+    background: #FFF;
+    padding: 15px 25px;
+    margin-top: -17px;
+}
+
+.dashboard_header{
+    float: left;
+    width: 100%;
+    background: #fff;
+    padding: 20px 25px;
+    border-bottom: 1px solid #EBEBEB;
+    border-top: 1px solid #EBEBEB;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.dashboard_content{
+    float: left;
+    width: 100%;
+    padding: 10px 25px;
+    background: #FFF;
+    margin-top: -10px;
+}
+
+.dashboard_footer{
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 0.875em;
+    background: #32A041;
+    padding: 20px 25px;
+    border-top: 1px solid #EBEBEB;
+    color: #FFF;
+}
+
+.dashboard_footer h1{
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #f5f5f5;
+}
+
+
+/*
+HEADER
+*/
+.mini-logo{
+    display: none;
+}
+
+.main_header{
+    background: #f5f5f5;
+    position: relative;
+    margin: 15px 0;
+}
+
+.main_header_logo{
+    font-size: 0;
+}
+
+.main_header_logo img{
+    height: 120px;
+}
+
+.main_header_dados{
+    width: 50%;
+    float: right;
+    margin-top: 35px;
+}
+
+.main_header_dados_img img{
+    height: 90px;
+    max-width: 90px;
+    background: #FFF;
+    border-radius: 50%;
+}
+
+.main_header_dados_info{
+    text-align: center;
+}
+
+.main_header_dados_info h6{
+    font-size: 1.1em;
+    color: #e5e5e5;
+    font-weight: 600;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.main_header_dados_info h4{
+    font-size: 0.8em;
+    color: #FFF;
+    font-weight: 300;
+    padding-bottom: 5px;
+}
+
+.main_header_dados_info a{
+    font-size: 0.875em;
+    color: #09F;
+    font-weight: 300;
+    text-decoration: none;
+    padding: 15px 3px;
+}
+
+.btn_alternativo{
+    font-size: 0.875em;
+    color: #32A041;
+    font-weight: 300;
+    text-decoration: none;
+    padding: 20px 25px 15px;
+}
+
+.link-close{
+    font-size: 0.875em;
+    color: #F00;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.btn_alternativo:hover,
+.link-close:hover{
+    text-decoration: underline;
+}
+
+
+/*COMUNS*/
+
+/*PAGINATOR - PAGINAÇÃO*/
+#paginator {
+    width: 100%;
+    float:left; 
+    padding:5px 3px; 
+    margin:10px 0 10px -5px;
+}
+
+#paginator a {
+    float:left; 
+    font-size: 0.875em;
+    display:block; 
+    border:1px solid #32A041; 
+    background:#FFF; 
+    margin:0 2px; 
+    padding:10px;
+    color:#060; 
+    text-decoration:none;
+}
+
+#paginator a:hover {
+    background:#71ca73; 
+    color:#FFF; 
+    text-decoration:none;
+}	
+
+#paginator h1 {
+    float:left; 
+    font-size: 0.875em;
+    display:block; 
+    border:1px solid #060; 
+    background:#060; 
+    margin:0 2px; 
+    padding:10px;
+    color:#FFF;
+}
+
+
+.titulo-secao-medio,
+.titulo-secao{
+    font-size: 1em;
+    font-weight: 500;
+    color: #FFF;
+    text-transform: uppercase;
+    padding: 10px 5px;
+    margin: 0 0 5px 0;
+    display: block;
+    width: 100%;
+    float: left;
+    background: #999;
+}
+
+.titulo-secao span,
+.titulo-secao-medio span{
+    float: right;
+    font-size: 0.8em;
+    padding-top: 3px;
+}
+
+.titulo-secao-link {
+    font-size: 0.8em;
+}
+
+
+/*TABELAS*/
+.tb_geral{
+    width: 100%;
+    border:1px solid #999;
+}
+
+.tr_header{
+    font-size: 0.875em;
+    color: #FFF;
+    text-transform: uppercase;
+    background: #32A041;
+    height: 50px;
+}
+
+.tr_yellow{
+    font-size: 0.875em;
+    color: #FFF;
+    text-transform: uppercase;
+    background: #999;
+    height: 50px;
+}
+
+.lista_itens {
+    font-size: 0.8em;
+    color:#333;
+    height:50px;
+}
+
+.lista_itens:hover {
+    background: #e5e5e5 !important;
+}
+
+.lista_itens_viagens {
+    font-size: 0.875em;
+    color:#333;
+    height:80px;
+}
+
+
+/*BOTOES*/
+.btn{
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 12px;
+    background: #888;
+    font-size: 0.9em;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    text-shadow: 1px 1px #555;
+}
+
+.btn:hover{
+    background: #555;
+    text-decoration: none;
+}
+
+.btn_disabled{
+    background-color: #E0E0E0;
+    text-shadow: none;
+    color: #666 !important;
+    cursor: default;
+}
+.btn_disabled:hover{
+    background-color: #E0E0E0;
+}
+
+.btn_default{
+    background-color: #E0E0E0;
+    text-shadow: none;
+    color: #666 !important;
+    font-weight: 500;
+}
+.btn_default:hover{
+    background-color: #ccc;
+}
+
+.btn_blue{
+    background-color: #0E96E5;
+    text-shadow: 1px 1px #096397;
+}
+.btn_blue:hover{
+    background-color: #096397;
+}
+
+.btn_red{
+    background-color: #F45563;
+    text-shadow: 1px 1px #C54550;
+}
+
+.btn_red:hover{
+    background-color: #C54550;
+}
+
+.btn_green{
+    background-color: #32A041;
+    text-shadow: 1px 1px #008068;
+}
+
+.btn_green:hover{
+    background-color: #093;
+}
+
+.btn_orange{
+    background: #F90;
+    border: none;
+    color: #FFF;
+    text-shadow: none;
+}
+
+.btn_orange:hover{
+    background: #F60;
+    cursor: pointer;
+}
+
+/*LINKS*/
+.link_os a{
+    text-decoration: none;
+    color: #096397;
+    font-size: 1em;
+}
+
+.link_os a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/*------------------
+PAGES
+-------------------*/
+
+/*PAGE DASHBOARD - PAINEL*/
+.painel_viaturas {
+    float: left; 
+    width: 100%;
+    margin: 10px 0;
+}
+
+.painel_viaturas .titulo-secao {
+    float: left;
+    width: 70%;
+}
+.painel_viaturas span {
+    float: left; 
+    text-align: center;
+    width: 30%;
+    background: #32A041; 
+    font:14px "Trebuchet MS", Arial, Helvetica, sans-serif; 
+    color: #FFF;
+    border-left: 1px solid #FFF;
+    padding: 11px;
+}
+
+.painel_viaturas span:hover {
+    background: #00B92F; 
+}	
+
+.painel_viaturas h4 {
+    float: left;
+    width: 100%; 
+    font: 0.875em;
+    color: #333; 
+    margin-top: 10px;
+}	
+
+.painel_viaturas .mostraVeiculo {
+    float: left; 
+    width: 100%; 
+    height: auto; 
+    margin: -1px 5px 0 0; 
+    padding: 10px; 
+    border: 1px solid #CCC; 
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.painel_viaturas .mostraVeiculo:hover {
+    background: #e5e5e5;
+}
+
+.painel_viaturas .mostraVeiculo .img_veiculo {
+    margin: 30px 0;
+}
+
+.painel_viaturas .mostraVeiculo .h1titulo {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.painel_viaturas .mostraVeiculo .h1titulo a {
+    color: #555; 
+    text-decoration: none;
+}
+
+.painel_viaturas .mostraVeiculo .h1titulo a:hover {
+    color: #999;
+}				
+
+.painel_viaturas .mostraVeiculo .h5placa {
+    float: left; 
+    font-size: 1em;
+    font-weight: 300;
+    color: #222; 
+    margin: 55px 0 0 -67px;
+}	
+
+
+
+
+
+.painel_viaturas .mostraVeiculo .h3Manut {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: -45px 0 0 120px;
+}
+
+.painel_viaturas .mostraVeiculo .h3Manut a {
+    color: #555; 
+    text-decoration: none;
+}
+
+.painel_viaturas .mostraVeiculo .h3Manut a:hover {
+    color: #999;
+}				
+
+.painel_viaturas .mostraVeiculo .h4Manut_placa {
+    float: left; 
+    font-size: 1em;
+    font-weight: 300;
+    color: #222; 
+    margin: 0 0 0 145px;
+}
+
+.painel_viaturas .mostraVeiculo .atencaoManut {
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    margin: -17px 0 0 100px;
+}
+
+
+
+
+.painel_viaturas .mostraVeiculo .h2livre,
+.painel_viaturas .mostraVeiculo .h2ocupado {
+    width: 70%;
+    padding: 15px 0;
+    font-size: 1.3em;
+    font-weight: 400;
+    background: #32A041; 
+    color: #FFF;
+    text-align: center; 
+    margin: 45px 0 0 45px; 
+}
+
+.painel_viaturas .mostraVeiculo .h2ocupado {
+    background:#DE0000;
+}
+
+.painel_viaturas .mostraVeiculo .h3proxima {
+    float: left; 
+    width: 100%;
+    padding: 5px 0; 
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #333; 
+    margin: 10px -35px;
+}
+
+.painel_viaturas .mostraVeiculo .h4dados {
+    float: left;
+    text-align: left;
+    padding: 0 0 10px 200px;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #666; 
+    margin: 5px 0 0 0;
+}
+
+.painel_viaturas .mostraVeiculo .h4dados a {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #09F; 
+    text-decoration: none;
+}
+
+.painel_viaturas .mostraVeiculo .h4dados a:hover {
+    text-decoration: underline;
+}
+
+.painel_viaturas .mostraVeiculo .h4dados .proxLivre {
+    float: left; 
+    font-size: 1em;
+    color: #32A041; 
+}
+
+.painel_viaturas .mostraVeiculo .combustivelIndex {
+    float: left;
+    width: 100%; 
+    text-align: center;
+    margin: 30px 0;
+    padding: 0;
+}
+
+.painel_viaturas .mostraVeiculo .atencaoVeiculo {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.painel_viaturas .avisosVeiculo {
+    float: left; 
+    width: 100%; 
+    background: #F90; 
+    margin: -1px 0 15px 0; 
+    padding: 5px 10px 20px 10px; 
+    border: 1px solid #CCC; 
+    display: none;
+}
+
+.painel_viaturas .avisosVeiculo h4{
+    float: left;
+    font-size: 1em;
+    font-weight: 500;
+    color: #FFF;
+}
+
+/*PAINEL ESTATÍSTICAS*/
+.painel_estatisticas {
+    float: left; 
+    width: 100%; 
+    margin: 25px 0; 
+    border: 1px solid #c5c5c5; 
+    background: #FFF; 
+    padding: 25px;
+}
+
+.painel_estatisticas h4 {
+    font-size: 1em;
+    font-weight: 500;
+    color: #222; 
+    margin: 0; 
+    text-align: center; 
+}	
+
+.painel_estatisticas h4 strong{
+    font-size: 1.4em;
+    padding-bottom: 15px;
+}
+
+
+/*PAGE MENSAGENS*/
+.painel_avisos,
+.painel_avisos_ok{
+    float: left; 
+    width: 100%;
+    margin: 10px 0;
+    background: #FFF;
+}
+
+.painel_avisos h1 {
+    float: left; 
+    width: 100%;
+    background: #999;
+    font-size: 1em;
+    font-weight: 500;
+    color: #FFF;
+    padding: 15px 0 15px 30px; 
+}
+
+.painel_avisos_ok h1 {
+    float: left; 
+    width: 100%;
+    background: #66afe9;
+    font-size: 1em;
+    font-weight: 600;
+    color: #FFF;
+    padding: 15px 0 15px 30px; 
+}
+
+.painel_avisos a{
+    float: left;
+    width: 100%;
+    font-size: 0.875em;
+    font-weight: normal;
+    color: #333;
+    padding: 25px 0 15px 30px;
+    margin:0 25px 0 0;
+    border-bottom: 1px dotted #CCC;
+    text-decoration: none;
+}
+
+.painel_avisos a:hover{
+    background: #e5e5e5;
+}
+
+.painel_avisos h4 strong {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #32A041;
+}
+
+
+/*FORMULÁRIOS (para todas as páginas)*/
+.user_altera_dados{
+    width: 100%;
+    float: left;
+    padding: 10px 20px;
+    margin-top: 5px;
+}
+
+.user_altera_dados_borda{
+    width: 100%;
+    float: left;
+    padding: 10px 20px;
+    border-top: 2px solid #999;
+}
+
+.user_altera_dados span,
+.user_altera_dados_borda span{
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #666;
+}
+
+.user_altera_dados input,
+.user_altera_dados_borda input {
+    font-size: 1em;
+    color: #000;
+    margin: 5px 0 10px 0;
+}
+
+.user_altera_dados .btn_altera,
+.user_altera_dados_borda .btn_altera{
+    color: #FFF;
+    float: right !important;
+    text-transform: uppercase;
+}
+
+.user_altera_dados label{
+    float: left;
+    width: 100%;
+}
+
+.user_altera_dados .label_medio{
+    float: left;
+    width: 32%;
+    margin-right: 2%;
+}
+
+.user_altera_dados .label_medio:nth-of-type(3n+0){
+    margin-right: 0;
+}
+
+.user_altera_dados .select_80{
+    float: left;
+    width: 80%;
+    margin-top: 4px;
+    margin-right: 5px;
+}
+
+.user_altera_dados .select_medio {
+    float: left;
+    width: 200px;
+    margin-top: 4px;
+    margin-right: 5px;
+}
+
+.user_altera_dados .select_small {
+    float: left;
+    width: 100px;
+    margin-top: 4px;
+    margin-right: 5px;
+}
+
+.check_altera_senha {
+    float: left;
+    width: 50%;
+    background: #f2dede;
+    border-radius: 3px;
+    margin-top: 3px;
+}
+
+.check_altera_senha span {
+    float: left;
+    text-transform: none;
+    color: #900;
+    padding: 12px 5px;
+}
+
+
+.check_altera_senha input{
+    margin: 13px 0 0 5px;
+    width: 15px;
+    float: left;    
+}
+
+.form_sub_titulo,
+.form_sub_titulo_100,
+.form_titulo_remove_user{
+    float: left;
+    width: 50%;
+    font-size: 1em;
+    color: #033;
+    margin-top: 15px;
+    font-weight: 400;
+    padding-left: 20px;
+}
+
+.form_sub_titulo_100,
+.form_titulo_remove_user{
+    width: 100%;
+    font-size: 1.3em;
+    color: #000;
+    margin: 20px 0;
+    padding-left: 0;
+    border-bottom: 2px solid #666;
+}
+
+.form_titulo_remove_user{
+    border: none;
+    color: #B90000;
+    font-size: 1.1em;
+}
+
+.altera_foto_servidor,
+.cadastra_foto_servidor{
+    float: left;
+    width: 100%;
+    height: 120px;
+    background: #EBEBEB;
+    margin:10px 0 0 0; 
+    border-radius: 3px;
+}
+
+.altera_foto_servidor input {
+    float: left;
+    border:none; 
+    font-size: 0.875em;
+    color: #333; 
+    margin: -65px 0 0 110px; 
+}
+
+.cadastra_foto_servidor input {
+    float: left;
+    border:none; 
+    font-size: 0.875em;
+    color: #333; 
+    margin-left: -10px;
+}
+
+.cadastra_foto_servidor span {
+    float: left;
+    font-size: 0.7em;
+    color: #999;
+    margin: -10px 0 15px 0;
+}
+
+.texto_desativa{
+    float: left;
+    width: 100%;
+    font-size: 0.9em;
+    font-weight: 400;
+    line-height: 30px;
+    color: #333;
+    margin-left: 50px;
+}
+
+.info_ativa_servidor{
+    float: left;
+    width: 100%;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 35px;
+    color: #222;
+    margin-left: 35px;
+}
+
+/*PAGE: Listar Solicitações*/
+/*Paineis de Pesquisa-----------------------------*/
+.bloco_search {
+    float:left; 
+    height:auto; 
+    width:100%; 
+    margin: 20px 0;
+    border-bottom:1px solid #888;
+}
+
+.bloco_search .btns_buscas {
+    float:left; 
+    height:auto; 
+    width:100%;
+}
+.bloco_search h1 {
+    float: left;  
+    width: 120px; 
+    text-align: center; 
+    padding: 12px 0; 
+    border: 1px solid #FFF; 
+    margin: 10px 5px 10px 0; 
+    display: block;
+    font-size: 0.875em;
+    font-weight: 400;
+    color: #FFF; 
+    background-color: #32A041;
+}
+
+.bloco_search h1:hover {
+    color:#FFF; 
+    background-color:#F00;
+}
+
+.bloco_search h2 {
+    float: left; 
+    width: 100%; 
+    font-size: 1em; 
+    font-weight: 400;
+    color: #EC0000; 
+    margin: 6px 0;
+}	
+
+.bloco_search h3 {
+    float: left;  
+    width: 25px; 
+    text-align: center; 
+    padding: 5px 0; 
+    border: 1px solid #FFF; 
+    margin: 11px; 
+    display: block;
+    font-size: 0.875em;
+    color: #FFF; 
+    background-color: #999; 
+    display: none;
+}
+
+.bloco_search h3:hover {
+    color: #FFF; 
+    background-color: #555;
+}
+
+.bloco_search .selecionada {
+    float: left;  
+    width: 170px; 
+    text-align: center; 
+    padding: 12px 0; 
+    border: 1px solid #FFF; 
+    margin: 10px 5px 10px 0; 
+    display:block;
+    font-size: 0.875em;
+    font-weight: 400; 
+    color:#FFF; 
+    background-color:#F00;
+}	
+
+/*Por Data*/
+.bloco_search .search_data {
+    float: left; 
+    height: 75px; 
+    border-left: 5px solid #F00; 
+    width: 100%; 
+    display: none; 
+    margin: 10px 0;
+}
+
+.bloco_search .search_data span {
+    float:left; 
+    margin: -15px 0 5px 5px;
+}
+
+.bloco_search .search_data input {
+    float: left;
+    width: 200px; 
+    margin: 10px 0 0 -145px; 
+}
+
+.bloco_search .search_data .btn {
+    float: left;
+    width: 50px; 
+    margin-left: 5px;
+    padding: 12px 0 11px 0;
+    border-radius: 0;
+}
+
+/*Por Servidor e Por Veículo*/
+.bloco_search .search_veiculo,
+.bloco_search .search_servidor {
+    float: left; 
+    height: 75px; 
+    border-left: 5px solid #F00; 
+    width: 100%; 
+    display: none; 
+    margin: 10px 0;
+}
+
+.bloco_search .search_veiculo span,
+.bloco_search .search_servidor span {
+    float:left; 
+    margin: -15px 0 5px 5px;
+}
+
+.bloco_search .search_servidor select {
+    float: left;
+    width: 210px; 
+    margin: 10px 0 0 -163px; 
+    border-radius: 0;
+}
+
+.bloco_search .search_veiculo select{
+    float: left;
+    width: 210px; 
+    margin: 10px 0 0 -157px; 
+    border-radius: 0;
+}
+
+.bloco_search .search_veiculo .btn,
+.bloco_search .search_servidor .btn {
+    float: left;
+    width: 50px; 
+    margin-top: 10px;
+    margin-left: 5px; 
+    padding: 12px 0 11px 0;
+    border-radius: 0;
+}
+
+/*Submenu-----------------------------*/
+.submenu {
+    float: left; 
+    width: 100%; 
+    margin: 20px 0 35px 0;
+}
+
+.submenu h3 {
+    float: left; 
+    font-size: 1em;
+    font-weight: 400;
+    width: 30%;
+    max-width: 350px;
+    color: #FFF; 
+    padding: 15px 0; 
+    background-color: #F90; 
+    margin-right: 15px; 
+    text-align: center;
+}
+
+.submenu h3:hover {
+    background-color: #F60; 
+    cursor:pointer; 
+    color:#FFF;
+}
+
+.submenu h5 {
+    float: left; 
+    font-size: 1em;
+    font-weight: 400;
+    width: 30%;
+    max-width: 350px;
+    color: #FFF;
+    padding: 15px 0; 
+    background-color: #0E96E5; 
+    margin-right: 15px; 
+    text-align: center;
+}
+
+.submenu h5:hover {
+    background-color: #096397;
+    color: #FFF; 
+    cursor: pointer;
+}
+
+.submenu .semAguardando {
+    float: left; 
+    font-size: 1em;
+    font-weight: 400;
+    width: 30%;
+    max-width: 350px;
+    color: #888;
+    padding: 15px 0; 
+    background-color: #e5e5e5; 
+    margin-right: 15px; 
+    text-align: center;
+}
+
+.submenu .semAguardando:hover {
+    background-color: #e5e5e5; 
+    color: #888; 
+    cursor: default;
+}
+
+.submenu .listando {
+    float: right; 
+    font-size: 1em;
+    font-weight: 400;
+    width: 30%;
+    max-width: 500px;
+    color: #000; 
+    padding: 15px 0; 
+    background-color: #FFF; 
+    margin-right: 0; 
+    text-align: center; 
+    border: 1px solid #CCC;
+}
+
+.submenu .listando:hover {
+    background-color:#e5e5e5;
+}
+
+.com_carona{
+    font-size: 0.8em;
+    color: #FFF;
+    background-color: #6AB5FF;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+/*PAGE: Detalhamento de guias*/
+.detalhesGuia{
+    width: 100%;
+    float: left;
+    margin: 0 0 30px 0;
+}
+.detalhesGuia span{
+    width: 100%;
+    float: left;
+    font-size: 1em;
+    font-weight: 600;
+    color: #222;
+    padding: 15px 0 15px 50px;
+    margin: 15px 0 0 0;
+    background: #f5f5f5;
+}
+
+.detalhesGuia h1{
+    width: 100%;
+    float: left;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #32A041;
+    padding: 15px 0 0 0;
+}
+
+.detalhesGuia h2{
+    width: 100%;
+    float: left;
+    font-size: 1em;
+    font-weight: 500;
+    color: #666;
+    padding: 10px 0 5px 25px;
+}
+
+.detalhesGuia h3{
+    width: 100%;
+    float: left;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #222;
+    padding: 5px 0 0 50px;
+}
+
+.detalhesGuia h4{
+    width: 100%;
+    float: left;
+    font-size: 0.875em;
+    font-weight: 500;
+    color: #666;
+    padding: 5px 0 0 80px;
+}
+
+.detalhesEncerrada{
+    width: 100%;
+    float: left;
+    height: auto;
+    border: 1px solid #66afe9;
+    border-top: none;
+    padding: 10px 0;
+}
+
+/*PAGE: Autorização, Não autorização e Cancelamento de guias*/
+/*Autorizando uma guia--------------------------------------*/
+.autoriza_guias .autorizarGuia {
+    float: left;
+    width: 100%; 
+    margin: 10px 0; 
+    text-align: center;
+    display: none; 
+    border: 1px solid #32A041;
+    padding: 5px 10px;
+}
+
+.autoriza_guias .autorizarGuia .tituloAutorizaGuia {
+    float: left;
+    background-color: #32A041; 
+    width: 100%; 
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #FFF; 
+    margin-top: 0;
+    border-radius: 0;
+}
+
+.autoriza_guias .autorizarGuia .tituloAutorizaGuia .fechar_listaVeiculos {
+    float: right; 
+    background-color: #FFF;
+    border: 1px solid #32A041;
+    width: 30px;
+    padding: 2px 5px;
+    font-size: 1em;
+    font-weight: 400;
+    color: #EC0000; 
+    border-radius: 0; 
+    margin: -15px 0 0 0;
+}
+
+.autoriza_guias .autorizarGuia .tituloAutorizaGuia .fechar_listaVeiculos:hover {
+    background-color: #f5f5f5; 
+    cursor: pointer;
+}
+
+.autoriza_guias .autorizarGuia .listaVeiculos {
+    float: left;
+    width: 100%;
+    padding: 0; 
+    text-align: center;
+    margin: 35px 0 35px 0;
+    text-align: center;
+}
+
+.autoriza_guias .autorizarGuia .radio_veiculo {
+    float: left;
+    width: 32%;
+    height: 80px;
+    margin-right: 2%;
+    border: 3px solid #999; 
+    position: relative;
+}
+
+.autoriza_guias .autorizarGuia .radio_veiculo:nth-of-type(3n+0) {
+    margin-right: 0;
+}
+
+.autoriza_guias .autorizarGuia .radio_veiculo label {
+    background: #E0E0E0 no-repeat center center; 
+    cursor: pointer; 
+    display: block; 
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    padding: 25px;
+    color: #000;
+    font-size: 1em;
+    font-weight: 400;
+    position: absolute; 
+    white-space: nowrap;
+}
+
+.autoriza_guias .autorizarGuia .radio_veiculo .label_ocupado {
+    font-size: 1em;
+    font-weight: 600;
+    color: #F00;
+    margin-top: -5px;
+}
+
+.autoriza_guias .autorizarGuia .radio_veiculo .label_seguro {
+    font-size: 0.875em;
+    font-weight: 500;
+    color: #333;
+    margin-top: -5px;
+}
+
+.autoriza_guias .autorizarGuia .radio_veiculo .label_ativo {
+    font-size: 0.875em;
+    font-weight: 500;
+    color: #666;
+    margin-top: -5px;
+}
+
+.autoriza_guias .autorizarGuia .listaVeiculos input:checked + label {
+    background: #71CA73 no-repeat center center; 
+    color: #FFF;
+    font-weight: 600;
+    outline: 2px solid #32A041;
+    margin: 0 0 0 -3px;
+    width: 100%;
+    height: 100%;
+}
+
+.autoriza_guias .autorizarGuia .listaVeiculos input:disabled + label {
+    background: #E0E0E0 no-repeat center center; 
+    color:#CCC; 
+    cursor:default;
+}
+
+.autoriza_guias .autorizarGuia .listaVeiculos input:checked + label:after {
+    background: url(../_assets/img/e_emp.png); 
+    background-repeat:no-repeat; 
+    bottom: -10px; content: "";
+    display: inline-block; 
+    height: 20px; 
+    position: absolute; 
+    right: -10px; 
+    width: 20px;
+}
+
+/*Não autorizando uma guia*/
+.autoriza_guias .naoAutorizarGuia {
+    float: left; 
+    width: 100%; 
+    margin: 10px 0; 
+    text-align: center; 
+    color: #FFF; 
+    display: none; 
+    border: 1px solid #F45563;
+    padding: 5px 10px;
+}
+
+.autoriza_guias .naoAutorizarGuia .tituloNaoAutorizaGuia {
+    float: left;
+    background-color: #F45563; 
+    width: 100%; 
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #FFF; 
+    margin-top: 0;
+    border-radius: 0;
+}
+
+.autoriza_guias .naoAutorizarGuia .tituloNaoAutorizaGuia .fechar_motivo {
+    float: right; 
+    background-color: #FFF;
+    border: 1px solid #F45563;
+    width: 30px;
+    padding: 2px 5px;
+    font-size: 1em;
+    font-weight: 400;
+    color: #EC0000; 
+    border-radius: 0; 
+    margin: -15px 0 0 0;
+}
+
+.autoriza_guias .naoAutorizarGuia .tituloNaoAutorizaGuia .fechar_motivo:hover{
+    background-color: #f5f5f5; 
+    cursor: pointer;
+}
+
+.autoriza_guias .naoAutorizarGuia .textarea_autoriza {
+    float: left; 
+    margin: 15px 0; 
+    color: #666; 
+    border: 1px solid #999; 
+    border-radius: 0;
+    resize: none;
+}
+
+
+/*Cancelando uma guia*/	
+.autoriza_guias .cancelaGuia {
+    float: left; 
+    width: 100%; 
+    margin: 10px 0; 
+    text-align: center; 
+    color: #FFF; 
+    display: none; 
+    border: 1px solid #666;
+    padding: 5px 10px
+}
+
+.autoriza_guias .cancelaGuia .tituloCancelaGuia {
+    float: left;
+    background-color: #666; 
+    width: 100%; 
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #FFF; 
+    margin-top: 0;
+    border-radius: 0;
+}
+
+.autoriza_guias .cancelaGuia .tituloCancelaGuia .fechar_cancela  {
+    float: right; 
+    background-color: #FFF;
+    border: 1px solid #666;
+    width: 30px;
+    padding: 2px 5px;
+    font-size: 1em;
+    font-weight: 400;
+    color: #EC0000; 
+    border-radius: 0; 
+    margin: -15px 0 0 0;
+}
+
+.autoriza_guias .cancelaGuia .tituloCancelaGuia .fechar_cancela:hover{
+    background-color: #f5f5f5; 
+    cursor: pointer;
+}
+
+.autoriza_guias .cancelaGuia .espaco_cancela {
+    float: left;
+    width: 100%;
+    margin: 35px 0;
+}
+
+
+/*PAGE: Veículos (admin_eeiculos.php)*/
+/*Listagem dos veículos cadastrados--------------------------------------*/
+.lista-veiculos{
+    float: left;
+    width: 100%;
+}
+
+.veiculo-single{
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+    margin-top: 15px;
+    border: 1px solid #CCC;
+}
+
+.veiculo-single:hover{
+    background: #f5f5f5;
+}
+
+.veiculo-single:nth-of-type(2n+0){
+    margin-right: 0;
+}
+
+.veiculo-titulo-ativo,
+.veiculo-titulo-inativo{
+    float: left;
+    width: 100%;
+    font-size: 1em;
+    background-color: #32A041;
+    padding: 7px 5px;
+    color: #FFF;
+}
+
+.veiculo-titulo-inativo{
+    background-color: #F45563;
+}
+
+.veiculos-detalhes-topo{
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.veiculos-detalhes-topo-img{
+    float: left;
+    width: 50%;
+}
+
+.veiculos-detalhes-topo-img img{
+    float: left;
+    width: 100%;
+    max-width: 300px;
+    padding: 5px;
+}
+
+.veiculos-detalhes-topo-dados{
+    float: right;
+    width: 50%;
+}
+
+.veiculos-detalhes-topo-dados h1{
+    float: left;
+    width: 100%;
+    font-size: 1.4em;
+    font-weight: 500;
+    color: #333;
+    margin: 5px 0 0 0;
+}
+
+.veiculos-detalhes-topo-dados h2{
+    float: left;
+    width: 100%;
+    font-size: 1em;
+    font-weight: 500;
+    color: #999;
+    margin: 3px 0 5px 0;
+}
+
+.veiculos-detalhes-topo-dados h3{
+    float: left;
+    width: 100%;
+    font-size: 0.875em;
+    font-weight: 600;
+    color: #06F;
+    margin: 3px 0 5px 0;
+}
+
+.veiculos-detalhes-topo-dados .img-combustivel{
+    float: left;
+    margin: 8px 5px 5px 0;
+}
+
+.veiculos-detalhes-topo-dados .btn{
+    margin: 5px;
+}
+
+.veiculos-detalhes-middle{
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    padding: 20px 0;
+}
+
+.veiculos-detalhes-middle h1,
+.veiculos-detalhes-middle h2,
+.veiculos-detalhes-middle h3,
+.veiculos-detalhes-middle h4{
+    float: left;
+    width: 100%;
+    font-size: 0.875em;
+    font-weight: 500;
+    color: #222;
+    margin: 5px 0 0 0;
+    padding: 0 5px;
+}
+
+.veiculos-detalhes-middle .link-ultima-guia{
+    float: left;
+    width: 100%;
+    text-decoration: none;
+    font-size: 0.875em;
+    font-weight: 500;
+    color: #666;
+    margin: 5px 0 0 0;
+    padding: 0 5px;
+}
+
+.veiculos-detalhes-middle .link-ultima-guia:hover {
+    color: #222;
+}
+
+.veiculos-detalhes-middle .time-info-ok{
+    font-size: 0.875em;
+    color: #06F;
+    margin: 5px;
+    padding: 0 5px;
+}
+
+.veiculos-detalhes-middle .time-info-no{
+    font-size: 0.875em;
+    color: #F45563;
+    margin: 5px;
+    padding: 0 5px;
+}
+
+.veiculos-detalhes-bottom{
+    float: left;
+    width: 100%;
+    margin: 10px 0 -10px 0;
+}
+
+.veiculos-detalhes-bottom > .btn{
+    margin-right: 5px;
+}
+
+/*PAGE: Veículos (admin_aveiculos.php)*/
+/*Ativação ou desativação dos veículos cadastrados--------------------------------------*/
+.formAtivaVeiculo,
+.formMotivoDesativa {
+    float: left;
+    width: 100%; 
+    padding: 0; 
+    margin: 10px 0; 
+    display: none;
+}
+
+.formMotivoDesativa textarea {
+    float: left;
+    width: 100%;
+    border: 1px solid #900;
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 0;
+    font-size: 1em;
+    color: #666;
+    resize: none;
+}
+
+.formMotivoDesativa span {
+    font-size: 1em;
+    color: #333;
+}
+
+/*PAGE: Manutenção (admin_amanutencao.php)*/
+/*Cadastro e alteração de manutenções dos veículos--------------------------------------*/
+.manutVeiculo{
+    float: left;
+    width: 100%;
+    margin:15px 0 0 0;
+    padding: 20px 10px;
+    background-color: #D5FFD5;
+}
+
+.manutVeiculo img{
+    float: left;
+    width: 100%;
+    max-width: 500px;
+}
+
+.manutVeiculo h1{
+    float: left;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #222;
+    margin: 5px 15px;
+}
+
+.manutVeiculo h2{
+    float: left;
+    width: 100%;
+    font-size: 1em;
+    font-weight: 500;
+    color: #666;
+}
+
+
+/*MODAL - ENCERRAR GUIAS*/
+.modal_encerra_guia{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8) url(load_w.gif) center center no-repeat;
+    z-index: 999;
+    display: none;
+}
+
+.modal_encerra_guia_header{
+    text-align: center;
+    padding: 15px 0;
+    background: #32A041;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.modal_encerra_guia_content{
+    display: none;
+    width: 600px;
+    max-width: 90%;
+    margin: 5% auto 0 auto;
+    background: #fff;
+}
+
+.modal_encerra_guia .encerraGuia_infos{
+    width: 100%;
+    float: left;
+    padding: 30px 15px;
+}
+
+.modal_encerra_guia_content h3{
+    font-size: 1em;
+    color: #033;
+    font-weight: 500;
+    padding: 5px 0;
+}
+
+.modal_encerra_guia_content span{
+    font-size: 0.875em;
+    font-weight: 500;
+    color: #222;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.modal_encerra_guia .encerraGuia_left{
+    width: 50%;
+    float: left;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.modal_encerra_guia .encerraGuia_right{
+    width: 50%;
+    float: right;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.modal_encerra_guia .encerraGuia_bottom{
+    width: 100%;
+    float: left;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.modal_encerra_guia .encerraGuia_left input,
+.modal_encerra_guia .encerraGuia_right input,
+.modal_encerra_guia .encerraGuia_right select{
+    width: 90%;
+    margin-top: 3px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.modal_encerra_guia .encerraGuia_bottom textarea{
+    width: 95%;
+    height: 80px;
+    float: left;
+    resize: none;
+    margin-top: 2px;
+    margin-left: 15px;
+}
+
+.modal_encerra_guia_info{
+    padding: 45px;
+    font-size: 1.1em;
+}
+
+.modal_encerra_guia_actions{
+    float: left;
+    display: block;
+    width: 100%;
+    padding: 20px;
+    text-align: right;
+    background: #f2f2f2;
+}
+
+.modal_encerra_guia_actions .btn{
+    font-weight: 600;
+    font-size: 0.875em;
+    padding: 15px;
+    text-transform: uppercase;
+}
+
+.modal_encerra_guia_actions .modal_encerra_close{
+    float: left;
+}
+
+.modal_encerra_guia_actions .modal_encerra_finish{
+    float: right;
+}
+
+.modal_encerra_load{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5) url(load_w.gif) center center no-repeat;
+    z-index: 999;
+    display: none;
+}
+
+.divFormNone{
+    display: none;
+}
+
+.formEncerradaNone{
+    display: none;
+}
+
+.formEncerradaBlock{
+    display: none;
+}
+
+
+
+/*BREAKPOINT'S: breakpoint's*/
+/*Breakpoint's para configuração da responsividade do sistema--------------------------------------*/
+
+/*
+1366PX BREAKPOINT
+*/
+@media(max-width: 1366px){
+    .veiculo-single {
+        width: 100%;
+        margin-right: 0;
+    }
+    
+    .painel_viaturas .mostraVeiculo .h4dados {
+        padding-left: 100px;
+    }
+}
+
+/*
+1120PX BREAKPOINT
+*/
+@media(max-width: 1120px){
+    .painel_viaturas .mostraVeiculo .h3proxima { 
+        margin: 10px -45px;
+    }
+    
+    .painel_viaturas .mostraVeiculo .h4dados {
+        padding-left: 50px;
+    }
+    
+    .painel_viaturas .mostraVeiculo .h2livre,
+    .painel_viaturas .mostraVeiculo .h2ocupado {
+        width: 50%;
+        padding: 10px 0;
+        font-size: 1.1em;
+        margin: 45px 0 0 45px; 
+    }
+    
+    .painel_viaturas .mostraVeiculo .combustivelIndex {
+        float: left;
+        width: 80%; 
+    }
+
+    .painel_estatisticas h4 {
+        font-size: 0.875em;
+        font-weight: 400;
+    }	
+
+    .painel_estatisticas h4 strong{
+        font-size: 1em;
+    }
+    
+    .dashboard_footer{
+        text-align: right;
+        font-size: 0.875em;
+    }
+
+    .dashboard_footer h1{
+        font-size: 1em;
+    }
+
+    .user_altera_dados .label_medio{
+        width: 100%;
+    }
+    
+    .user_altera_dados .select_medio,
+    .user_altera_dados .select_80 {
+        width: 100%;
+    }
+}
+
+/*
+1020PX BREAKPOINT
+*/
+@media(max-width: 1020px){
+    .btn_manut{
+        float: left;
+        width: 100%;
+        margin-top: 50px;
+    }
+    
+    .btn_manut > .fl_right{
+        float: left;
+    }
+    
+    .tr_header{
+        font-size: 0.7em;
+        height: 40px;
+    }
+
+    .tr_yellow{
+        font-size: 0.875em;
+        color: #FFF;
+        text-transform: uppercase;
+        background: #999;
+        height: 50px;
+    }
+
+    .lista_itens {
+        font-size: 0.7em;
+        color:#333;
+        height:50px;
+    }
+}
+
+/*
+850PX BREAKPOINT
+*/
+@media(max-width: 850px){
+    .main_header_logo img{
+        height: 90px;
+    }
+}
+
+/*
+810PX BREAKPOINT
+*/
+@media(max-width: 810px){
+    .titulo-secao,
+    .titulo-secao-medio{
+        font-size: 0.875em;
+    }
+    
+    .titulo-secao span,
+    .titulo-secao-medio span{
+        font-size: 0.7em;
+        padding: 2px 0;
+    }
+    
+    .titulo-secao-link span {
+        font-size: 0.8em !important;
+        padding: 13px 0 12px 0;
+    }
+    
+    .painel_viaturas .mostraVeiculo .h1titulo {
+        font-size: 1em;
+    }
+    
+    .painel_viaturas .mostraVeiculo .atencaoVeiculo .fa-3x{
+        font-size: 2em;
+    }
+    
+    .painel_viaturas .mostraVeiculo .h4dados {
+        padding-left: 10px;
+    }
+    
+    .painel_viaturas .mostraVeiculo .combustivelIndex {
+        float: left;
+        width: 50%; 
+    }
+    .painel_viaturas .mostraVeiculo .combustivelIndex img {
+        float: left;
+        width: 100%; 
+        max-width: 120px;
+        margin-left: 35px;
+    }
+    
+}
