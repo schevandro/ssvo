@@ -45,16 +45,16 @@ if ($readCountAberta >= 1) {
         $data_saida = $saida_ano . '-' . $saida_mes . '-' . $saida_dia;
         $dest_cidade = $_POST['destino'];
         $dest_estado = $_POST['estado'];
-        $destino = $dest_cidade . $dest_estado;
+        $destino = $dest_cidade . '-' . $dest_estado;
         if ($_POST['destino_dois'] == ''):
             $destino_2 = null;
         else:
-            $destino_2 = $_POST['destino_dois'] . $_POST['estado_dois'];
+            $destino_2 = $_POST['destino_dois'] . '-' . $_POST['estado_dois'];
         endif;
         if ($_POST['destino_tres'] == ''):
             $destino_3 = null;
         else:
-            $destino_3 = $_POST['destino_tres'] . $_POST['estado_tres'];
+            $destino_3 = $_POST['destino_tres'] . '-' . $_POST['estado_tres'];
         endif;
 
         if ($data_calendario == "" or $dest_cidade == "" or $dest_estado == "") {
@@ -232,7 +232,6 @@ if ($readCountAberta >= 1) {
                                                 ;
                                         }
                                         ?>
-
                                         <tr class="lista_itens_viagens" style="height: 60px;">
                                             <td align="left" style="padding-left:5px; font-size:14px;"><?php echo $veiculoSolic['veiculo'] . '-' . $veiculoSolic['placa']; ?></td>
                                             <td align="left" style="padding-left:5px;"><?php echo $solicitDia['servidor']; ?></td>    
@@ -240,15 +239,13 @@ if ($readCountAberta >= 1) {
                                             <td align="center"><?php echo date('d/m/y', strtotime($solicitDia['prev_retorno_data'])) . ' às ' . date('H:i', strtotime($solicitDia['prev_retorno_hora'])); ?></td>
                                             <td align="center"><?php echo $solicitDia['roteiro']; ?></td>
                                             <td align="center"><img src="../_assets/img/ico_carona_nao.png" alt="Para solicitar carona nesta viagem, vá para a página 'Solicitações Agendadas'" title="Para solicitar carona nesta viagem, vá para a página 'Solicitações Agendadas'" width="25px" /></td>
-                                        </tr>  
-
+                                        </tr>
                                         <?php
                                     }//fecha foreach	
                                     ?>
                                 </table> 
                                     <a class="btn_voltarpg" href="pre_solicitar_viatura.php">Voltar</a>
-                                    <a href="solicitar_viatura.php?dia_vai=<?php echo $saida_dia; ?>&mes_vai=<?php echo $saida_mes; ?>&ano_vai=<?php echo $saida_ano; ?>&destino_vai=<?php echo utf8_encode($destino); ?>&destino_2=<?php echo utf8_encode($destino_2); ?>&destino_3=<?php echo utf8_encode($destino_3); ?>"><h1 class="btn_newavanca">Prosseguir</h1></a>	
-
+                                    <a href="solicitar_viatura.php?dia_vai=<?php echo $saida_dia; ?>&mes_vai=<?php echo $saida_mes; ?>&ano_vai=<?php echo $saida_ano; ?>&destino_vai=<?php echo utf8_encode($destino); ?>&destino_2=<?php echo utf8_encode($destino_2); ?>&destino_3=<?php echo utf8_encode($destino_3); ?>"><h1 class="btn_newavanca">Prosseguir</h1></a>
                                 <?php
                             }
                             //Se NÃO há viagens para o destino selecionado na data	
@@ -272,10 +269,8 @@ if ($readCountAberta >= 1) {
                                         <td align="center">Destino</td>
                                         <td align="center">Carona</td>
                                     </tr>
-
                                     <?php
                                     foreach ($readContaSolicitacoes as $solicitacoes) {
-
                                         //Exclui placa do nome do veiculo e busca veículo na tabela veículos
                                         $mostra_veiculoSolic = explode("-", $solicitacoes['veiculo']);
                                         $buscaVeiculoSolic = read('vt_veiculos', "WHERE placa = '$mostra_veiculoSolic[1]'");
@@ -285,7 +280,6 @@ if ($readCountAberta >= 1) {
                                                 ;
                                         }
                                         ?>
-
                                         <tr height="50px" style="font:12px Tahoma, Geneva, sans-serif;">
                                             <td align="left" style="padding-left:5px;"><?php echo $veiculoSolic['veiculo'] . '-' . $veiculoSolic['placa']; ?></td>
                                             <td align="left" style="padding-left:5px;"><?php echo $solicitacoes['servidor']; ?></td>    
@@ -321,7 +315,6 @@ if ($readCountAberta >= 1) {
         }//fecha avançar
     }
     ?>
-    
     <?php
         if ($existeViagem != 1):
     ?>
@@ -330,7 +323,13 @@ if ($readCountAberta >= 1) {
 
             <label class="informa_data_uso" onmousedown="stopCarona()" style="float:left;">
                 <span><i class="fa fa-calendar"></i> Data:</span><br />
-                <input type="text" id="calendario" class="seleciona_data" name="calendario" readonly="true" />
+                <input type="text" id="calendario" class="seleciona_data" name="calendario" readonly="true"
+                    value="<?php
+                    if(isset($_POST['calendario'])){
+                        echo $_POST['calendario'];
+                    }
+                    ?>"
+                />
             </label>            
 
             <label>
@@ -338,6 +337,7 @@ if ($readCountAberta >= 1) {
                 <select name="estado" id="estado" class="select_estado j_loadstate">
                     <option value="" disabled="disabled">UF</option>
                     <option value="RS" selected>RS</option>
+                    <option value="<?php if($_POST['estado'] != ""){ echo $_POST['estado']; } ?>" <?php if($_POST['estado'] != ""){ echo "selected"; } ?>> <?php if(isset($_POST['estado']) & $_POST['estado'] != ""){ echo $_POST['estado']; } ?> </option>
                     <?php
                     foreach ($readEstadoFirst as $select_estado) {
                         $estado_selecionado = $select_estado['estado_uf'];
@@ -346,12 +346,13 @@ if ($readCountAberta >= 1) {
                     <?php } ?>
                 </select>
                 <select class="selects_destinos j_loadcity" name="destino" id="destino">
-                    <option value="" selected disabled> Selecione a cidade </option>
+                    <option disabled <?php if($_POST['destino'] == ""){ echo "selected"; } ?>> Selecione a cidade </option>
+                    <option value="<?php if($_POST['destino'] != ""){ echo $dest_cidade; } ?>" <?php if($_POST['destino'] != ""){ echo "selected"; } ?>> <?php if(isset($_POST['destino']) & $_POST['destino'] != ""){ echo $dest_cidade; } ?> </option>
                     <?php
                     $readCityes = read("app_cidades", "WHERE cidade_uf = 'RS'");
                     foreach ($readCityes as $cidades):
                         $nome_cidade = utf8_encode($cidades['cidade_nome']);
-                        echo "<option value=\"{$nome_cidade}-\"> {$nome_cidade} </option>";
+                        echo "<option value=\"{$nome_cidade}\"> {$nome_cidade} </option>";
                     endforeach;
                     ?>
                 </select>
@@ -452,7 +453,6 @@ if ($readCountAberta >= 1) {
         }
 
     </script><!--scripts de numero de passageiros-->
-
 
     <?php
 }

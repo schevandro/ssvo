@@ -66,7 +66,6 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
             echo "<h4 class='ms no'><i class='fa fa-exclamation-circle fa-2x' style='color: #F00'></i> &nbsp;&nbsp;&nbsp;Você já tem uma solicitação de Viatura Oficial para {$verifica_destino} em {$echodata}.</h4>";
         } else {
 
-
             //Receber dados do Formulário
             if (isset($_POST['solicitar'])) {
 
@@ -122,6 +121,8 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                 $f['roteiro_2']     = $destino_2;
                 $f['roteiro_3']     = $destino_3;
                 $f['data_uso']      = $ano_vai . '-' . $mes_vai . '-' . $dia_vai;
+                $f['hora_saida']    = $_POST['hora_saida'];
+                $f['minuto_saida']  = $_POST['minuto_saida'];
                 $f['horario_uso']   = "{$_POST['hora_saida']}:{$_POST['minuto_saida']}";
                 //Variável para verificar ocupação das viaturas
                 $f['datetime_saida'] = $f['data_uso'] . ' ' . $f['horario_uso'] . ':00';
@@ -133,6 +134,8 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                 $prev_data_mes              = $prev_data_separa[1];
                 $prev_data_ano              = $prev_data_separa[2];
                 $f['prev_retorno_data']     = $prev_data_ano . '-' . $prev_data_mes . '-' . $prev_data_dia;
+                $f['hora_retorno']          = $_POST['hora_retorno'];
+                $f['minuto_retorno']        = $_POST['minuto_retorno'];
                 $f['prev_retorno_hora']     = "{$_POST['hora_retorno']}:{$_POST['minuto_retorno']}";
                 //Variável para verificar ocupação das viaturas
                 $f['datetime_retorno']      = $f['prev_retorno_data'] . ' ' . $f['prev_retorno_hora'] . ':00';
@@ -220,7 +223,12 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                                     else:
                                         echo "<h4 class='ms no'><i class='fa fa-exclamation-circle fa-2x' style='color: #F00'></i> &nbsp;&nbsp;&nbsp; Erro ao fazer o Upload do Arquivo -> {$up['pasta']}{$nome_final}</h4>";
                                     endif;
-                                    
+
+                                    unset ($f['hora_saida']);
+                                    unset ($f['minuto_saida']);
+                                    unset ($f['hora_retorno']);
+                                    unset ($f['minuto_retorno']);
+
                                     $sql_cadastra = create('vt_solicitacoes', $f);
                                     
                                     if($sql_cadastra):
@@ -338,6 +346,7 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                             <span>Condutor*:</span><br />
                             <select name="motorista" id="motorista" onchange="meAddCarona()">
                                 <option value="" selected>Selecione</option>
+                                <option value="<?php echo $f['motorista']; ?>" <?php if(isset($f['motorista'])){ echo "selected"; } ?>><?php echo $f['motorista']; ?></option>
                                 <?php
                                 foreach ($readCondutor as $select_condutor) {
                                     $condutor_selecionado = $select_condutor['nome'] . ',' . $select_condutor['cnh'] . ',' . $select_condutor['cnh_vencimento'] . ',' . $select_condutor['cnh_categoria'] . ',' . $select_condutor['os_motorista'] . ',' . $select_condutor['os_motorista_data'] . ',' . $select_condutor['siape'] . ',' . $select_condutor['email'];
@@ -356,6 +365,7 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                                 <span>Condutor*:</span><br />
                                 <select name="motorista" id="motorista" onchange="meAddCarona()">
                                     <option value="" selected>Selecione</option>
+                                    <option value="<?php echo $f['motorista']; ?>" <?php if(isset($f['motorista'])){ echo "selected"; } ?>><?php echo $f['motorista']; ?></option>
                                     <?php
                                     foreach ($readCondutor as $select_condutor) {
                                         $condutor_selecionado = $select_condutor['nome'] . ',' . $select_condutor['cnh'] . ',' . $select_condutor['cnh_vencimento'] . ',' . $select_condutor['cnh_categoria'] . ',' . $select_condutor['os_motorista'] . ',' . $select_condutor['os_motorista_data'] . ',' . $select_condutor['siape'] . ',' . $select_condutor['email'];
@@ -373,6 +383,7 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                                 <span>Alterar Condutor:</span><br />
                                 <select name="motorista" id="motorista" onchange="meAddCarona()">
                                     <option value="<?php echo $_SESSION['autUser']['nome']; ?>" selected><?php echo $_SESSION['autUser']['nome']; ?></option>
+                                    <option value="<?php echo $f['motorista']; ?>" <?php if(isset($f['motorista'])){ echo "selected"; } ?>><?php echo $f['motorista']; ?></option>
                                     <?php
                                     foreach ($readCondutor as $select_condutor) {
                                         $condutor_selecionado = $select_condutor['nome'] . ',' . $select_condutor['cnh'] . ',' . $select_condutor['cnh_vencimento'] . ',' . $select_condutor['cnh_categoria'] . ',' . $select_condutor['os_motorista'] . ',' . $select_condutor['os_motorista_data'] . ',' . $select_condutor['siape'] . ',' . $select_condutor['email'];
@@ -391,19 +402,20 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                     <label>
                         <span>Finalidade para uso da Viatura Oficial*:</span><br />
                         <select name="finalidade" id="finalidade" class="select_sexo">
-                            <option value="Convocação" selected>Convocação</option>
-                            <option value="Reunião">Reunião</option>
-                            <option value="Eventos">Eventos</option>
-                            <option value="Projetos de Pesquisa / Extensão">Projeto de Pesquisa / Extensão</option>
-                            <option value="Divulgação">Divulgação</option>
-                            <option value="Visita Técnica">Visita Técnica</option>
-                            <option value="Banco e Correios">Ir ao Banco e/ou Correios</option>
-                            <option value="Outros">Outros</option>
+                            <option value="" selected disabled>Selecione</option>
+                            <option value="Convocação" <?php if(isset($f['finalidade']) & $f['finalidade'] == "Convocação"){ echo "selected"; } ?>>Convocação</option>
+                            <option value="Reunião" <?php if(isset($f['finalidade']) & $f['finalidade'] == "Reunião"){ echo "selected"; } ?>>Reunião</option>
+                            <option value="Eventos" <?php if(isset($f['finalidade']) & $f['finalidade'] == "Eventos"){ echo "selected"; } ?>>Eventos</option>
+                            <option value="Projetos de Pesquisa / Extensão" <?php if(isset($f['finalidade']) & $f['finalidade'] == "Projetos de Pesquisa / Extensão"){ echo "selected"; } ?>>Projeto de Pesquisa / Extensão</option>
+                            <option value="Divulgação" <?php if(isset($f['finalidade']) & $f['finalidade'] == "Divulgação"){ echo "selected"; } ?>>Divulgação</option>
+                            <option value="Visita Técnica" <?php if(isset($f['finalidade']) & $f['finalidade'] == "Visita Técnica"){ echo "selected"; } ?>>Visita Técnica</option>
+                            <option value="Banco e Correios" <?php if(isset($f['finalidade']) & $f['finalidade'] == "Banco e Correios"){ echo "selected"; } ?>>Ir ao Banco e/ou Correios</option>
+                            <option value="Outros" <?php if(isset($f['finalidade']) & $f['finalidade'] == "Outros"){ echo "selected"; } ?>>Outros</option>
                         </select> 
                     </label>
                     <label>
                         <span>Descrição*:</span><br />
-                        <textarea id="descricao" name="descricao" rows="8" cols="50" /></textarea>
+                        <textarea id="descricao" name="descricao" rows="8" cols="50" /><?php if(isset($f['desc_finalidade'])){ echo $f['desc_finalidade']; } ?></textarea>
                     </label>
                     <label>
                         <span>Roteiro:</span>
@@ -418,7 +430,6 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                             }
                             ?>
                         </div>
-
                     </label>
 
                     <label>
@@ -433,10 +444,11 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                             <label>
                                 <span>Horario de Saída:</span><br />
                                 <select name="hora_saida" id="hora_saida" class="horaPrevRetorno">
+                                    <?php if(isset($f['hora_saida'])){ echo "<option value='{$f['hora_saida']}'>{$f['hora_saida']}</option>"; } ?>
                                     <option value="00">00</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
-                                    <option value="03">03</option>
+                                   <option value='{$f['hora_saida']}'>{$f[ <option value="03">03</option>
                                     <option value="04">04</option>
                                     <option value="05">05</option>
                                     <option value="06">06</option>
@@ -460,7 +472,8 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                                 </select>
                                 
                                 <select name="minuto_saida" id="minuto_saida" class="horaPrevRetorno">
-                                    <option value="00" selected="selected">00</option>
+                                    <?php if(isset($f['minuto_saida'])){ echo "<option value='{$f['minuto_saida']}'>{$f['minuto_saida']}</option>"; } ?>
+                                    <option value="00">00</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
                                     <option value="03">03</option>
@@ -526,13 +539,21 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                         <div class="sdr_center">
                             <label>
                                 <span>Data de Retorno:</span><br />
-                                <input type="text" readonly="true" name="calendario" id="calendario" class="infoDataRetorno" value="<?php echo $dia_vai . '/' . $mes_vai . '/' . $ano_vai; ?>" />
+                                <input type="text" readonly="true" name="calendario" id="calendario" class="infoDataRetorno"
+                                       value="<?php
+                                                if(isset($_POST['calendario'])){
+                                                    echo $_POST['calendario'];
+                                                }else{
+                                                    echo $dia_vai . '/' . $mes_vai . '/' . $ano_vai;
+                                                }
+                                            ?>"
                             </label>
                         </div>
                         <div class="sdr_right">
                             <label>
                                 <span>Horário de Retorno:</span><br />
                                 <select name="hora_retorno" id="hora_retorno" class="horaPrevRetorno">
+                                    <?php if(isset($f['hora_retorno'])){ echo "<option value='{$f['hora_retorno']}'>{$f['hora_retorno']}</option>"; } ?>
                                     <option value="00">00</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
@@ -560,7 +581,8 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                                 </select>
                                 
                                 <select name="minuto_retorno" id="minuto_retorno" class="horaPrevRetorno">
-                                    <option value="00" selected="selected">00</option>
+                                    <?php if(isset($f['minuto_retorno'])){ echo "<option value='{$f['minuto_retorno']}'>{$f['minuto_retorno']}</option>"; } ?>
+                                    <option value="00">00</option>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
                                     <option value="03">03</option>
@@ -633,22 +655,22 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                         </label>
                     </div>
 
-                    
                     <!--sistema de passageiros-->                   
                     <label>
                         <h4>Passageiros:</h4><br />
                         <h6>Para adicionar passageiros que não sejam servidores, utilize o menu <strong><em>Minhas Solicitações</em></strong>, após concluir sua solicitação </h6>
                         <select name="passageiros" id="passageiros" class="select_passageiros" onchange="optionCheck()">
-                            <option value="Nao" selected>Não</option>
-                            <option value="Sim">Sim</option>
+                            <option value="Nao" <?php if(isset($passageiros) & $passageiros == "Nao"){ echo "selected"; } ?>>Não</option>
+                            <option value="Sim" <?php if(isset($passageiros) & $passageiros != "Nao"){ echo "selected"; } ?>>Sim</option>
                         </select>
                     </label>
-                    
-                    <div id="com_passageiros">
+
+                    <div id="com_passageiros" <?php if($passageiro_um != ""){ echo "style= 'display: block; margin-top: 0; visibility: visible;'"; } ?>>
                         <label>
                             <span>Passageiro nº 1:</span><br />
                             <select name="passageiro_um" id="passageiro_um" onchange="valPass1()">
-                                <option value="" disabled="disabled" selected>Selecione</option>
+                                <option disabled <?php if($passageiro_um == ""){ echo "selected"; } ?>>Selecione</option>
+                                <option value="<?php if($passageiro_um != ""){ echo $passageiro_um; } ?>" <?php if($passageiro_um != ""){ echo "selected"; } ?>> <?php if(isset($passageiro_um) & $passageiro_um != ""){ echo $passageiro_um; } ?> </option>
                                 <?php
                                 foreach ($readPassageiro as $select_passageiro_um) {
                                     $passageiro_um_selecionado = $select_passageiro_um['nome'];
@@ -660,11 +682,12 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                         </label>
                     </div>
 
-                    <div id="com_passageiros_dois">
+                    <div id="com_passageiros_dois" <?php if($passageiro_dois != ""){ echo "style= 'display: block; margin-top: 0; visibility: visible;'"; } ?>>
                         <label>
                             <span>Passageiro nº 2:</span><br />
                             <select name="passageiro_dois" id="passageiro_dois" onchange="valPass2()">
-                                <option value="" disabled="disabled" selected>Selecione</option>
+                                <option disabled <?php if($passageiro_dois == ""){ echo "selected"; } ?>>Selecione</option>
+                                <option value="<?php if($passageiro_dois != ""){ echo $passageiro_dois; } ?>" <?php if($passageiro_dois != ""){ echo "selected"; } ?>> <?php if(isset($passageiro_dois) & $passageiro_dois != ""){ echo $passageiro_dois; } ?> </option>
                                 <?php
                                 foreach ($readPassageiro as $select_passageiro_um) {
                                     $passageiro_um_selecionado = $select_passageiro_um['nome'];
@@ -677,11 +700,12 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                         </label>
                     </div>
 
-                    <div id="com_passageiros_tres">
+                    <div id="com_passageiros_tres" <?php if($passageiro_tres != ""){ echo "style= 'display: block; margin-top: 0; visibility: visible;'"; } ?>>
                         <label>
                             <span>Passageiro nº 3:</span><br />
                             <select name="passageiro_tres" id="passageiro_tres" onchange="valPass3()">
-                                <option value="" disabled="disabled" selected>Selecione</option>
+                                <option disabled <?php if($passageiro_tres == ""){ echo "selected"; } ?>>Selecione</option>
+                                <option value="<?php if($passageiro_tres != ""){ echo $passageiro_tres; } ?>" <?php if($passageiro_tres != ""){ echo "selected"; } ?>> <?php if(isset($passageiro_tres) & $passageiro_tres != ""){ echo $passageiro_tres; } ?> </option>
                                 <?php
                                 foreach ($readPassageiro as $select_passageiro_um) {
                                     $passageiro_um_selecionado = $select_passageiro_um['nome'];
@@ -694,11 +718,12 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                         </label>
                     </div>
 
-                    <div id="com_passageiros_quatro">
+                    <div id="com_passageiros_quatro" <?php if($passageiro_quatro != ""){ echo "style= 'display: block; margin-top: 0; visibility: visible;'"; } ?>>
                         <label>
                             <span>Passageiro nº 4:</span><br />
                             <select name="passageiro_quatro" id="passageiro_quatro" onchange="valPass4()">
-                                <option value="" disabled="disabled" selected>Selecione</option>
+                                <option disabled <?php if($passageiro_quatro == ""){ echo "selected"; } ?>>Selecione</option>
+                                <option value="<?php if($passageiro_quatro != ""){ echo $passageiro_quatro; } ?>" <?php if($passageiro_quatro != ""){ echo "selected"; } ?>> <?php if(isset($passageiro_quatro) & $passageiro_quatro != ""){ echo $passageiro_quatro; } ?> </option>
                                 <?php
                                 foreach ($readPassageiro as $select_passageiro_um) {
                                     $passageiro_um_selecionado = $select_passageiro_um['nome'];
@@ -711,11 +736,12 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                         </label>
                     </div>
 
-                    <div id="com_passageiros_cinco">
+                    <div id="com_passageiros_cinco" <?php if($passageiro_cinco != ""){ echo "style= 'display: block; margin-top: 0; visibility: visible;'"; } ?>>
                         <label>
                             <span>Passageiro nº 5:</span><br />
                             <select name="passageiro_cinco" id="passageiro_cinco" onchange="valPass5()">
-                                <option value="" disabled="disabled" selected>Selecione</option>
+                                <option disabled <?php if($passageiro_cinco == ""){ echo "selected"; } ?>>Selecione</option>
+                                <option value="<?php if($passageiro_cinco != ""){ echo $passageiro_cinco; } ?>" <?php if($passageiro_cinco != ""){ echo "selected"; } ?>> <?php if(isset($passageiro_cinco) & $passageiro_cinco != ""){ echo $passageiro_cinco; } ?> </option>
                                 <?php
                                 foreach ($readPassageiro as $select_passageiro_um) {
                                     $passageiro_um_selecionado = $select_passageiro_um['nome'];
@@ -728,11 +754,12 @@ if ($destino_vai == "" or $dia_vai == "" or $mes_vai == "" or $ano_vai == "") {
                         </label>
                     </div>
 
-                    <div id="com_passageiros_seis">
+                    <div id="com_passageiros_seis" <?php if($passageiro_seis != ""){ echo "style= 'display: block; margin-top: 0; visibility: visible;'"; } ?>>
                         <label>
                             <span>Passageiro nº 6:</span><br />
                             <select name="passageiro_seis" id="passageiro_seis" onchange="valPass6()">
-                                <option value="" disabled="disabled" selected>Selecione</option>
+                                <option disabled <?php if($passageiro_seis == ""){ echo "selected"; } ?>>Selecione</option>
+                                <option value="<?php if($passageiro_seis != ""){ echo $passageiro_seis; } ?>" <?php if($passageiro_seis != ""){ echo "selected"; } ?>> <?php if(isset($passageiro_seis) & $passageiro_seis != ""){ echo $passageiro_seis; } ?> </option>
                                 <?php
                                 foreach ($readPassageiro as $select_passageiro_um) {
                                     $passageiro_um_selecionado = $select_passageiro_um['nome'];
