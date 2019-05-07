@@ -1,0 +1,27 @@
+﻿<?php
+//DEFINE BANCO DE DADOS
+define(HOST,'localhost');
+define(USER,'root');
+define(PASS,'');
+define(DBSA,'ssvo');
+
+//BASE DO SITE
+define(BASE,'http://localhost');
+define(SITENAME,'Sistema de Viaturas Oficiais - Campus (nome do campus)');
+define(SITEDESC,'Descrição do Site');
+define(SITETAGS,'Tags do Site');
+
+//DEFINE SERVIDOR DE EMAIL
+define(MAILADMIN,'admin@mail.com'); /* E-mail Administrador */
+define(MAILUSER,'notify@mail.com'); /* E-mail que enviará as notificações */
+define(MAILPASS,'');
+define(MAILPORT,'465');
+define(MAILHOST,'smtp.gmail.com');
+define(MAILSEC,'ssl');
+define(MAILAUTH,'true');
+
+//MEUS DADOS
+define(ENDERECO,'Rua Endereço, 0101');
+define(CEP,'Feliz-RS - CEP:95770-000');
+define(FONE,'51 0000-1111');
+?>
