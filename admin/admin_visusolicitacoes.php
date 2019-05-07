@@ -68,6 +68,13 @@ if ($_SESSION['autUser']['admin'] == 1 || $_SESSION['autUser']['admin'] == 2):
                         <h4><i class="fa fa-arrow-right"></i> <strong>KM de Saída:</strong> <?php echo $patr['km_saida']; ?></h4>
                         <h4><i class="fa fa-arrow-right"></i> <strong>KM de Chegada:</strong> <?php echo $patr['km_chegada']; ?></h4>
                         <h4><i class="fa fa-arrow-right"></i> <strong>KM Percorridos:</strong> <?php echo $patr['km_percorridos']; ?></h4>                               
+                        <?php
+                            if($patr['observacao'] != null){
+                           ?>
+                                <h4><i class="fa fa-exclamation-triangle"></i> <strong>Observações:</strong> <?php echo $patr['observacao']; ?></h4>
+                           <?php
+                            }
+                        ?>
                     </div>
 
                     <?php
