@@ -2,10 +2,3 @@ dts/iniSis.php
 sis_viaturas/codes/ajax/city.php
 .idea/workspace.xml
 .vagrant/
-admin/doc-veiculos/*
-admin/documentos/comprovantes_guia/*
-admin/os/*
-admin/cnh/*
-admin/imagens/veiculos/*
-admin/imagens/assinaturas/*
-admin/imagens/servidores/*
